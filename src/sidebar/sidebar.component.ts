@@ -10,7 +10,13 @@ import { Router } from '@angular/router';
 
 export class SidebarComponent {
   constructor(private router: Router) { }
-  navigate() {
-    this.router.navigate(['users']);
+  navigate(url: string) {
+    switch (url) {
+      case 'dashboard':
+        this.router.navigate(['dashboard']);
+        break;
+      case 'users':
+        this.router.navigate(['users']);
+    }
   }
 }

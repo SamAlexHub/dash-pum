@@ -20,7 +20,6 @@ import { UsersComponent } from './users/users.component';
      
         <main class="dashboard-content">
           <router-outlet></router-outlet>
-          <!-- <app-dash-home></app-dash-home> -->
         </main>
       </div>
     </div>
@@ -30,7 +29,6 @@ import { UsersComponent } from './users/users.component';
 })
 
 
-
 export class App {
   title = 'Admin Dashboard';
 }
@@ -38,7 +36,7 @@ export class App {
 const routes: Route[] = [
   { path: '', redirectTo: 'dashboard', pathMatch: 'full' }, // Redirect to main page
   { path: 'dashboard', component: DashHomeComponent },
-  { path: 'users', component: UsersComponent }
+  { path: 'users', loadComponent:() => import('./users/users.component').then(m => m.UsersComponent) }
 ];
 
 bootstrapApplication(App, {
